@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using RentAMovie.ViewModel;
 
 namespace RentAMovie.Controllers
 {
@@ -45,8 +46,11 @@ namespace RentAMovie.Controllers
 
         public ActionResult Create()
         {
-
-            return View();
+            CustomerMembershipViewModel viewModel = new CustomerMembershipViewModel();
+            Customer customer = new Customer();
+            var membershipTypes = dbContext.MembershipTypes.ToList();
+            viewModel.MembershipTypes = membershipTypes;
+            return View(viewModel);
         }
     }
 }

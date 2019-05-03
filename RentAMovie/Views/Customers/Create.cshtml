@@ -1,4 +1,4 @@
-﻿@model RentAMovie.Models.Customer
+﻿@model RentAMovie.ViewModel.CustomerMembershipViewModel
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,25 +6,33 @@
 
 <h2>Create</h2>
 
+<head>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(c => c.Name)
-        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+        @Html.LabelFor(c => c.Customer.Name)
+        @Html.TextBoxFor(c => c.Customer.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Customer.Name)
     </div>
     <div class="form-group">
-        @Html.LabelFor(c => c.DateOfBirth)
-        @Html.TextBoxFor(c => c.DateOfBirth, new { @class = "form-control" })
+        @Html.LabelFor(c => c.Customer.DateOfBirth)
+        @Html.TextBoxFor(c => c.Customer.DateOfBirth, new { @class = "form-control" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(c => c.MembershipTypeId)
-        @Html.TextBoxFor(c => c.MembershipTypeId, new { @class = "form-control" })
+        @Html.LabelFor(c => c.Customer.MembershipTypeId)
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeId,new SelectList(Model.MembershipTypes,"Id","MembershipTypeName"),"---Select---",new { @class="form-control"})
     </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
+            <input type="submit" class="btn btn-default" value="Create" />
         </div>
     </div>
 

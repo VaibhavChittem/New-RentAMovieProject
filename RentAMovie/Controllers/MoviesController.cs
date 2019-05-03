@@ -4,21 +4,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace RentAMovie.Controllers
 {
     public class MoviesController : Controller
     {
+        private ApplicationDbContext dbContext = null;
+        public MoviesController()
+        {
+            dbContext = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            dbContext.Dispose();
+        }
         // GET: Movies
         public ActionResult Index()
         {
-            var movie = GetMovies();
+            var movie = dbContext.Movies.Include(c => c.Genre).ToList();
             return View(movie);
         }
 
        public ActionResult Details(int id)
         {
-            var movie = GetMovies().SingleOrDefault(x => x.ID == id);
+            var movie = dbContext.Movies.Include(c => c.Genre).SingleOrDefault(x => x.ID == id);
             return View(movie);
         }
         public List<Movie> GetMovies()

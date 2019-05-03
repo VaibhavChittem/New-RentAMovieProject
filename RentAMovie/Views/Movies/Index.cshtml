@@ -8,19 +8,21 @@
 
 <table class="table table-bordered table-hover">
     <tr>
-        <th>Movie ID</th>
+        @*<th>Movie ID</th>*@
         <th>Movie Name</th>
-        <th>Released Date</th>
-        <th>Movie Added</th>
+        @*<th>Released Date</th>*@
+        @*<th>Movie Added</th>*@
+        <th>Genre Type</th>
     </tr>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.ID</td>
+                @*<td>@item.ID</td>*@
                 <td>@Html.ActionLink(item.Name,"Details","Movies",new {id=item.ID},null)</td>
-                <td>@item.Releasedate</td>
-                <td>@item.DateAdded</td>
+                @*<td>@item.Releasedate</td>*@
+                @*<td>@item.DateAdded</td>*@
+                <td>@item.Genre.Name</td>
             </tr>
         }
     </tbody>
