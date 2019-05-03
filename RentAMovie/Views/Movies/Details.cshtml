@@ -1,0 +1,24 @@
+﻿@model RentAMovie.Models.Movie
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<ul>
+
+    <li>
+        Customer Id :   @Model.ID
+    </li>
+    <li>
+        Customer Name :   @Model.Name
+    </li>
+    <li>
+        Released Date :   @Model.Releasedate
+    </li>
+    <li>
+        Movie Added : @Model.DateAdded
+    </li>
+
+</ul>

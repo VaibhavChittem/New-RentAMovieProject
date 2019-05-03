@@ -1,0 +1,30 @@
+﻿@model List<RentAMovie.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customer Details</h2>
+
+
+<table class="table table-bordered table-hover">
+    <tr>
+        @*<th>Customer ID</th>*@
+        <th>Name</th>
+        @*<th>Date Of Birth</th>*@
+        <th>Membership Type</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>@item.Id</td>*@
+                <td>@Html.ActionLink(item.Name,"Details","Customers",new {id=item.Id},null)</td>
+                @*<td>@item.DateOfBirth</td>*@
+                <td>@item.MembershipType.MembershipTypeName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
