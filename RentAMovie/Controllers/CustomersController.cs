@@ -58,9 +58,21 @@ namespace RentAMovie.Controllers
         [HttpPost]
         public ActionResult Create(Customer customer)
         {
-            dbContext.Customers.Add(customer);
-            dbContext.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                dbContext.Customers.Add(customer);
+                dbContext.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            CustomerMembershipViewModel viewModel = new CustomerMembershipViewModel();
+            Customer customer1 = new Customer();
+            var membershipTypes = dbContext.MembershipTypes.ToList();
+            viewModel.Customer = customer1;
+            viewModel.MembershipTypes = membershipTypes;
+            return View(viewModel);
+
+
         }
 
         [HttpGet]
