@@ -15,6 +15,8 @@ namespace RentAMovie.Models
         [Display(Name = "Customer Name")]
         public string Name { get; set; }
         [Display(Name = "Birth Date")]
+        [DataType(DataType.Date)]
+        [Required]
         public DateTime DateOfBirth { get; set; }
 
         //references
@@ -22,6 +24,7 @@ namespace RentAMovie.Models
 
         //Reference a Column
         [Display(Name = "Membership Type")]
+        [Required]
         public int MembershipTypeId { get; set; }
 
     }

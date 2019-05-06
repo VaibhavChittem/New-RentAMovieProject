@@ -1,0 +1,36 @@
+﻿@model RentAMovie.ViewModel.MovieGenreViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(c => c.Movie.ID)
+    <div class="form-group">
+        @Html.LabelFor(c => c.Movie.Name)
+        @Html.TextBoxFor(c => c.Movie.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Movie.Releasedate)
+        @Html.TextBoxFor(c => c.Movie.Releasedate, "{0:d}", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Movie.DateAdded)
+        @Html.TextBoxFor(c => c.Movie.DateAdded, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Movie.Stock)
+        @Html.TextBoxFor(c => c.Movie.Stock, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Movie.Genre)
+        @Html.TextBoxFor(c => c.Movie.GenreId, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+            <input type="submit" class="btn btn-primary" value="Save Changes" />
+        </div>
+    </div>
+}

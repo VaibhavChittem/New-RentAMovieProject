@@ -1,0 +1,45 @@
+﻿@model RentAMovie.ViewModel.CustomerMembershipViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(c => c.Customer.Id)
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.Name)
+        @Html.TextBoxFor(c => c.Customer.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.DateOfBirth)
+        @Html.TextBoxFor(c => c.Customer.DateOfBirth, "{0:d}", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.MembershipType)
+        @Html.TextBoxFor(c => c.Customer.MembershipTypeId, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-8">
+            <input type="submit" class="btn btn-primary" value="Save Changes" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+
+    @Scripts.Render("~/Scripts/jqueryui")
+
+    @Styles.Render("~/Styles/jquerycss")
+
+    <script>
+        $(document).ready(function () {
+            $("#Customer_DateOfBirth").datepicker({
+                changeYear: true,
+                changeMonth: true
+            });
+        });
+    </script>
+}

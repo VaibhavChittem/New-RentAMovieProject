@@ -5,7 +5,7 @@
 }
 
 <h2>Index</h2>
-
+@Html.ActionLink("Add New Movie", "Create", "Movies")
 <table class="table table-bordered table-hover">
     <tr>
         @*<th>Movie ID</th>*@
@@ -13,16 +13,18 @@
         @*<th>Released Date</th>*@
         @*<th>Movie Added</th>*@
         <th>Genre Type</th>
+        <th>Action</th>
     </tr>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
                 @*<td>@item.ID</td>*@
-                <td>@Html.ActionLink(item.Name,"Details","Movies",new {id=item.ID},null)</td>
+                <td>@Html.ActionLink(item.Name, "Details", "Movies", new { id = item.ID }, null)</td>
                 @*<td>@item.Releasedate</td>*@
                 @*<td>@item.DateAdded</td>*@
                 <td>@item.Genre.Name</td>
+                <td>@Html.ActionLink("Edit","Edit","Movies",new { id = item.ID},null)</td>
             </tr>
         }
     </tbody>

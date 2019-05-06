@@ -44,13 +44,53 @@ namespace RentAMovie.Controllers
             return customers;
         }
 
+        [HttpGet]
         public ActionResult Create()
         {
             CustomerMembershipViewModel viewModel = new CustomerMembershipViewModel();
             Customer customer = new Customer();
             var membershipTypes = dbContext.MembershipTypes.ToList();
+            viewModel.Customer = customer;
             viewModel.MembershipTypes = membershipTypes;
             return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Create(Customer customer)
+        {
+            dbContext.Customers.Add(customer);
+            dbContext.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var customer = dbContext.Customers.SingleOrDefault(c => c.Id == id);
+            var memTypes = dbContext.MembershipTypes.ToList();
+            CustomerMembershipViewModel viewModel = new CustomerMembershipViewModel
+            {
+                Customer = customer,
+                MembershipTypes = memTypes
+            };
+            return View(viewModel);
+        }
+        [HttpPost]
+        public ActionResult Edit(Customer customer)
+        {
+            var customerTbl = dbContext.Customers.SingleOrDefault(c => c.Id == customer.Id);
+            if (customerTbl == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                customerTbl.Name = customer.Name;
+                customerTbl.DateOfBirth = customer.DateOfBirth;
+                customerTbl.MembershipTypeId = customer.MembershipTypeId;
+                dbContext.SaveChanges();
+            }
+            return RedirectToAction("Index", "Customers");
         }
     }
 }

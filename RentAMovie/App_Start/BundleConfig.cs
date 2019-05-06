@@ -25,6 +25,12 @@ namespace RentAMovie
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/Scripts/jqueryui").Include(
+                "~/Scripts/jquery-ui-{version}.js"));
+
+            bundles.Add(new ScriptBundle("~/Styles/jquerycss").Include(
+                "~/Content/themes/base/jquery-ui.css"));
         }
     }
 }
