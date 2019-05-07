@@ -1,4 +1,5 @@
 ﻿@model RentAMovie.ViewModel.CustomerMembershipViewModel
+
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -38,7 +39,8 @@
         $(document).ready(function () {
             $("#Customer_DateOfBirth").datepicker({
                 changeYear: true,
-                changeMonth: true
+                changeMonth: true,
+                dateFormat:"dd-mm-yyyy"
             });
         });
     </script>

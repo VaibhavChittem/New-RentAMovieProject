@@ -13,7 +13,9 @@
         @*<th>Released Date</th>*@
         @*<th>Movie Added</th>*@
         <th>Genre Type</th>
-        <th>Action</th>
+        <th>Edit </th>
+        <th>Details </th>
+        <th>Delete</th>
     </tr>
     <tbody>
         @foreach (var item in Model)
@@ -25,6 +27,7 @@
                 @*<td>@item.DateAdded</td>*@
                 <td>@item.Genre.Name</td>
                 <td>@Html.ActionLink("Edit","Edit","Movies",new { id = item.ID},null)</td>
+                <td>@Html.ActionLink("Details","Details","Movies",new { id=item.ID},null)</td>
             </tr>
         }
     </tbody>

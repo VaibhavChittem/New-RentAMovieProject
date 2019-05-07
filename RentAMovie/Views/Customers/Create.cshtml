@@ -16,6 +16,7 @@
 
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
 @*<div class="form-group">
     @Html.LabelFor(c => c.Customer.Id)
     @Html.EditorFor(c => c.Customer.Id, new { htmlAttributes = new { @class = "form-control" } })

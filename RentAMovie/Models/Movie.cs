@@ -12,17 +12,23 @@ namespace RentAMovie.Models
 
         [Required]
         public string Name { get; set; }
+
         [DataType(DataType.Date)]
+        [Required]
         public DateTime Releasedate { get; set; }
+
         [DataType(DataType.Date)]
+        [Required]
         public DateTime DateAdded { get; set; }
 
+        [Required]
         public int Stock { get; set; }
 
         //Refernces
         public Genre Genre { get; set; }
 
         //reference a column
+        [Required]
         public int GenreId { get; set; }
 
     }

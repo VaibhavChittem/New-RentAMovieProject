@@ -9,6 +9,8 @@ using RentAMovie.ViewModel;
 
 namespace RentAMovie.Controllers
 {
+    [RequireHttps]
+    [Authorize]
     public class MoviesController : Controller
     {
         private ApplicationDbContext dbContext = null;
@@ -56,9 +58,22 @@ namespace RentAMovie.Controllers
         [HttpPost]
         public ActionResult Create(Movie movie)
         {
-            dbContext.Movies.Add(movie);
-            dbContext.SaveChanges();
-            return RedirectToAction("Index", "Movies");
+            if (ModelState.IsValid)
+            {
+                dbContext.Movies.Add(movie);
+                dbContext.SaveChanges();
+                return RedirectToAction("Index", "Movies");
+            }
+            else
+            {
+                MovieGenreViewModel viewModel = new MovieGenreViewModel();
+                Movie movie1 = new Movie();
+                var genreTypes = dbContext.Genres.ToList();
+                viewModel.Movie = movie1;
+                viewModel.Genres = genreTypes;
+                return View(viewModel);
+            }
+            
         }
 
         [HttpGet]

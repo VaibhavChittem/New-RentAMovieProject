@@ -58,11 +58,11 @@ namespace RentAMovie
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "702748673052-f1r974nb9s4f2p19gd7dng6d3b594480.apps.googleusercontent.com",
+                ClientSecret = "imR9rapjOE1cAcqnzs2lyXbB"
+            });
         }
     }
 }

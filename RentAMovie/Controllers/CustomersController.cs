@@ -9,6 +9,8 @@ using RentAMovie.ViewModel;
 
 namespace RentAMovie.Controllers
 {
+    [RequireHttps]
+    
     public class CustomersController : Controller
     {
         private ApplicationDbContext dbContext = null;
@@ -44,6 +46,8 @@ namespace RentAMovie.Controllers
             return customers;
         }
 
+        [ValidateAntiForgeryToken]
+        [Authorize]
         [HttpGet]
         public ActionResult Create()
         {

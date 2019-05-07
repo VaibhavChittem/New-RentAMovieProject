@@ -11,6 +11,7 @@
     <div class="form-group">
         @Html.LabelFor(c => c.Movie.Name)
         @Html.TextBoxFor(c => c.Movie.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Movie.Name, "", new { @class = "text-danger" })
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Movie.Releasedate)
@@ -18,7 +19,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Movie.DateAdded)
-        @Html.TextBoxFor(c => c.Movie.DateAdded, new { @class = "form-control" })
+        @Html.TextBoxFor(c => c.Movie.DateAdded,"{0:d}", new { @class = "form-control" })
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.Movie.Stock)
@@ -33,4 +34,26 @@
             <input type="submit" class="btn btn-primary" value="Save Changes" />
         </div>
     </div>
+}
+@section Scripts {
+
+    @Scripts.Render("~/Scripts/jqueryui")
+
+    @Styles.Render("~/Styles/jquerycss")
+
+    <script>
+        $(document).ready(function () {
+            $("#Movie_Releasedate").datepicker({
+                changeYear: true,
+                changeMonth: true
+            });
+        });
+
+        $(document).ready(function () {
+            $("#Movie_DateAdded").datepicker({
+                changeYear: true,
+                changeMonth: true
+            });
+        });
+    </script>
 }
